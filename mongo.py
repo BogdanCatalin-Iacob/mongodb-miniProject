@@ -51,9 +51,11 @@ coll = conn[DATABASE][COLLECTION]
 
 # coll.insert_many(new_docs)
 
-coll.delete_one({"first": "douglas"})
+# coll.delete_one({"first": "douglas"})
 
-documents = coll.find()
+coll.update_many({"nationality": "american"}, {"$set": {"hair_color": "maroon"}})
+
+documents = coll.find({"nationality": "american"})
 
 
 for doc in documents:
