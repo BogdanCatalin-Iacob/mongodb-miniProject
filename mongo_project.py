@@ -36,7 +36,25 @@ def add_record():
     dob = input("Enter date of birth > ")
     gender = input("Enter gender > ")
     hair_color = input("Enter hair color > ")
+    occupation = input("Enter occupation")
     nationality = input("Enter nationality > ")
+
+    new_doc = {
+        "first": first.lower(),
+        "last": last.lower(),
+        "dob": dob,
+        "gender": gender,
+        "hair_color": hair_color,
+        "occupation": occupation,
+        "nationality": nationality
+    }
+
+    try:
+        coll.insert_one(new_doc)
+        print('')
+        print("Document inserted")
+    except:
+        print("Error accessing the database")
 
 
 def main_loop():
