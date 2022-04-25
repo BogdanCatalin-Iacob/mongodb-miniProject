@@ -30,6 +30,9 @@ def show_menu():
 
 
 def add_record():
+    '''
+    Insert a record in the database
+    '''
     print("")
     first = input("Enter first name > ")
     last = input("Enter last name > ")
@@ -55,6 +58,26 @@ def add_record():
         print("Document inserted")
     except:
         print("Error accessing the database")
+
+
+def get_record():
+    '''
+    Get a record from database
+    '''
+    print("")
+    first = input("Enter first name > ")
+    last = input("Enter last name > ")
+
+    try:
+        doc = coll.find({"first": first.lower(), "last": last.lower()})
+    except:
+        print("Error accessing the database")
+
+    if not doc:
+        print('')
+        print("Error! No result found.")
+
+    return doc
 
 
 def main_loop():
